@@ -9,7 +9,7 @@ public:
     T data;
     Node* next;
 
-    Node(T data) : data(data), next(nullptr) {}
+    explicit Node(T data) : data(data), next(nullptr) {}
 };
 
 template<typename T>

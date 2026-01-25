@@ -10,7 +10,7 @@ public:
     P priority;
     Node2* next;
 
-    Node2(T data, P priority) : data(data), priority(priority), next(nullptr) {}
+    explicit Node2(T data, P priority) : data(data), priority(priority), next(nullptr) {}
 };
 
 template<typename T, typename P = int>
