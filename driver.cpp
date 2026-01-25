@@ -17,7 +17,7 @@
 #include "priority_queue.h"
 
 // Function to generate random values and test the queue automatically
-void automaticTest(PriorityQueue& pq, int numTests = 10) {
+void automaticTest(PriorityQueue<int>& pq, int numTests = 10) {
     std::random_device rd;
     std::mt19937 gen(rd());
     std::uniform_int_distribution<> valueDist(-100, 100);
@@ -48,7 +48,7 @@ void automaticTest(PriorityQueue& pq, int numTests = 10) {
 }
 
 void runPriorityQueueTests() {
-    PriorityQueue pq;
+    PriorityQueue<int> pq;
 
     std::cout << "\n========== Testing PriorityQueue ==========\n";
 
