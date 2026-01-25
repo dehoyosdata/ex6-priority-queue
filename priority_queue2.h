@@ -27,8 +27,11 @@ public:
     void enqueue(int data, int priority);
     int dequeue();
     bool isEmpty() const;
+    int size() const;
     int peekFront() const;
+    int peekFrontPriority() const;
     void displayQueue() const;
+    void clear();
 };
 
 #endif // PRIORITYQUEUE2_H

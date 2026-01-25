@@ -23,7 +23,7 @@ void PriorityQueue2::enqueue(int data, int priority) {
         front = newNode;
     } else {
         Node2* current = front;
-        // Travers to find the correct insertion point
+        // Traverse to find the correct insertion point
         while (current->next != nullptr && current->next->priority >= priority) {
             current = current->next;
         }
@@ -51,9 +51,35 @@ bool PriorityQueue2::isEmpty() const {
 int PriorityQueue2::peekFront() const {
     if (isEmpty()) {
         std::cerr << "Queue is empty" << std::endl;
-        return -1; // Return an error value if the queue is empty
+        return -1;
     }
     return front->data;
+}
+
+int PriorityQueue2::peekFrontPriority() const {
+    if (isEmpty()) {
+        std::cerr << "Queue is empty" << std::endl;
+        return -1;
+    }
+    return front->priority;
+}
+
+int PriorityQueue2::size() const {
+    int count = 0;
+    Node2* current = front;
+    while (current != nullptr) {
+        count++;
+        current = current->next;
+    }
+    return count;
+}
+
+void PriorityQueue2::clear() {
+    while (front != nullptr) {
+        Node2* temp = front;
+        front = front->next;
+        delete temp;
+    }
 }
 
 void PriorityQueue2::displayQueue() const {

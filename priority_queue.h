@@ -26,8 +26,10 @@ public:
     void enqueue(int data);
     int dequeue();
     bool isEmpty() const;
+    int size() const;
     int peekFront() const;
     void displayQueue() const;
+    void clear();
 };
 
 #endif // PRIORITYQUEUE_H
