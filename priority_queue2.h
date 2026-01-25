@@ -61,7 +61,7 @@ public:
         return data;
     }
 
-    bool isEmpty() const {
+    bool isEmpty() const noexcept {
         return front == nullptr;
     }
 
