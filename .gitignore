@@ -7,7 +7,7 @@
 
 # CLion products
 cmake-build-debug/
-CMakeLists.txt
+build/
 
 # all the answer file that store local
 answer.html
