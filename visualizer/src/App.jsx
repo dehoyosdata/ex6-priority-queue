@@ -1,18 +1,30 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
+import { PriorityQueue } from './PriorityQueue'
+import { Node } from './Node'
 import './App.css'
 
 function App() {
+  const pqRef = useRef(new PriorityQueue())
   const [queue, setQueue] = useState([])
   const [inputValue, setInputValue] = useState('')
 
-  // TODO: Implement enqueue with animation
+  // TODO: Implement with animation steps
   const handleEnqueue = () => {
-    console.log('Enqueue:', inputValue)
+    if (inputValue === '') return
+    pqRef.current.enqueue(Number(inputValue))
+    setQueue(pqRef.current.toArray())
+    setInputValue('')
   }
 
-  // TODO: Implement dequeue with animation
+  // TODO: Implement with animation steps
   const handleDequeue = () => {
-    console.log('Dequeue')
+    pqRef.current.dequeue()
+    setQueue(pqRef.current.toArray())
+  }
+
+  const handleClear = () => {
+    pqRef.current.clear()
+    setQueue([])
   }
 
   return (
@@ -30,6 +42,7 @@ function App() {
         />
         <button onClick={handleEnqueue}>Enqueue</button>
         <button onClick={handleDequeue}>Dequeue</button>
+        <button onClick={handleClear}>Clear</button>
       </div>
 
       {/* Queue Visualization */}
@@ -38,7 +51,9 @@ function App() {
           <p className="empty-message">Queue is empty</p>
         ) : (
           <div className="queue">
-            {/* TODO: Render nodes */}
+            {queue.map((node, idx) => (
+              <Node key={node.id} value={node.data} isHead={idx === 0} />
+            ))}
           </div>
         )}
       </div>
@@ -46,7 +61,7 @@ function App() {
       {/* Info Panel */}
       <div className="info-panel">
         <p>Size: {queue.length}</p>
-        <p>Front: {queue.length > 0 ? queue[0] : 'N/A'}</p>
+        <p>Front: {queue.length > 0 ? queue[0].data : 'N/A'}</p>
       </div>
     </div>
   )
