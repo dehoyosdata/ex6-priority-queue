@@ -52,7 +52,12 @@ function App() {
         ) : (
           <div className="queue">
             {queue.map((node, idx) => (
-              <Node key={node.id} value={node.data} isHead={idx === 0} />
+              <Node
+                key={node.id}
+                value={node.data}
+                isHead={idx === 0}
+                isLast={idx === queue.length - 1}
+              />
             ))}
           </div>
         )}

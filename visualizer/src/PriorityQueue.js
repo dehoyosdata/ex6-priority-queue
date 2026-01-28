@@ -7,14 +7,34 @@ export class PriorityQueue {
     this._size = 0
   }
 
-  // TODO: Insert in sorted order (lower value = higher priority)
-  enqueue(data) {}
+  enqueue(data) {
+    const newNode = { data, next: null, id: crypto.randomUUID() }
 
-  // TODO: Remove and return front element
-  dequeue() {}
+    if (this.head === null || data < this.head.data) {
+      newNode.next = this.head
+      this.head = newNode
+    } else {
+      let temp = this.head
+      while (temp.next !== null && temp.next.data <= data) {
+        temp = temp.next
+      }
+      newNode.next = temp.next
+      temp.next = newNode
+    }
+    this._size++
+  }
 
-  // TODO: Return front element without removing
-  peek() {}
+  dequeue() {
+    if (this.head === null) return null
+    const value = this.head.data
+    this.head = this.head.next
+    this._size--
+    return value
+  }
+
+  peek() {
+    return this.head ? this.head.data : null
+  }
 
   isEmpty() {
     return this.head === null
@@ -24,9 +44,14 @@ export class PriorityQueue {
     return this._size
   }
 
-  // TODO: Convert linked list to array for rendering
   toArray() {
-    return []
+    const arr = []
+    let current = this.head
+    while (current !== null) {
+      arr.push({ data: current.data, id: current.id })
+      current = current.next
+    }
+    return arr
   }
 
   clear() {

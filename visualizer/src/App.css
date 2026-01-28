@@ -43,10 +43,10 @@
 
 .queue {
   display: flex;
-  gap: 0.5rem;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
   flex-wrap: wrap;
+  gap: 0.25rem;
 }
 
 /* Info Panel */
@@ -58,8 +58,39 @@
 }
 
 /* Node */
+.node-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.head-label {
+  font-size: 0.7rem;
+  color: #4ade80;
+  margin-bottom: 0.25rem;
+  font-weight: bold;
+}
+
 .node {
-  /* TODO: Style node box */
-  /* TODO: Add arrow/pointer visual */
-  /* TODO: Highlight animation */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  border: 2px solid #646cff;
+  border-radius: 8px;
+  background: #1a1a2e;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.node-head {
+  border-color: #4ade80;
+  box-shadow: 0 0 10px rgba(74, 222, 128, 0.3);
+}
+
+.node-arrow {
+  font-size: 1.5rem;
+  color: #646cff;
+  margin: 0 0.5rem;
 }
